@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- Prebid Config Section START -->
+  <!-- Make sure this is inserted before your GPT tag -->
+  <script>
+    var PREBID_TIMEOUT = 1000;
+
+    var adUnits = [{
+		code: 'div-gpt-ad-1460505748561-0',
+        sizes: [[300, 250]],
+        //mediaTypes: {
+        //    video: {
+        //        context: 'outstream',
+        //        playerSize: [640, 360]
+        //    },
+        //},
+		bids: [{
+                bidder: 'open8',
+				params: {
+					pub: 267,
+					zone: 62546
+				}
+			}
+        ],
+        // renderer: {
+           // url: "http://cdn.adnxs.com/renderer/video/ANOutstreamVideo.js",
+           // render: function (bid) {
+           //     console.log("------");
+           //     console.log(bid);
+           //     var h1 = document.createElement("h1");
+           //     h1.textContent = "aaa";
+           //     document.body.appendChild(h1);
+           //     var video = document.createElement('video');
+           //     video.src = "https://letronc2.blob.core.windows.net/movies/rectangle/1152x648/1.mp4";
+           //     //video.src = "http://localhost:8080/vast.xml";
+           //     //video.type = "video/mp4";
+           //     document.write("<h1>bbb</h1>");
+           //     video.autoplay = true;
+           //     video.width = "640";
+           //     video.height = "360";
+           //     video.controls = true;
+           //     document.body.appendChild(video);
+
+           //     var videoTag = document.createElement("video");
+           //     videoTag.src = bid.vastUrl;
+           //     videoTag.autoplay = true;
+           //     docuemnt.body.appendChild(videoTag);
+           //     var h1 = document.createElement("h1");
+           //     h1.textContent = "aaa";
+           //     document.body.appendChild(h1);
+           // }
+        // }
+        // renderer: {
+        //     url: "http://cdn.adnxs.com/renderer/video/ANOutstreamVideo.js",
+        //     render: function (bid) {
+        //         console.log('=======');
+        //         console.log(bid);
+        //       ANOutstreamVideo.renderAd({
+        //           targetId: bid.adUnitCode,
+        //           adResponse: bid.vastXml,
+        //       });
+        //     }
+        // }
+	}];
+
+    var pbjs = pbjs || {};
+    pbjs.que = pbjs.que || [];
+  </script>
+  <!-- Prebid Config Section END -->
+
+  <!-- Prebid Boilerplate Section START. No Need to Edit. -->
+  <script type="text/javascript" src="../../build/dev/prebid.js" async></script>
+  <script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    googletag.cmd.push(function() {
+        googletag.pubads().disableInitialLoad();
+    });
+
+    pbjs.que.push(function() {
+        pbjs.addAdUnits(adUnits);
+        pbjs.requestBids({
+            bidsBackHandler: sendAdserverRequest
+        });
+    });
+
+    function sendAdserverRequest() {
+        if (pbjs.adserverRequestSent) return;
+        console.log('FFFFF');
+        pbjs.adserverRequestSent = true;
+        googletag.cmd.push(function() {
+            pbjs.que.push(function() {
+                pbjs.setTargetingForGPTAsync();
+                googletag.pubads().refresh();
+            });
+        });
+    }
+
+    setTimeout(function() {
+        console.log('GGGG');
+        sendAdserverRequest();
+    }, PREBID_TIMEOUT);
+
+    console.log('BBBBB');
+  </script>
+  <!-- Prebid Boilerplate Section END -->
+
+  <script>
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+    console.log('CCCCC');
+  </script>
+
+  <script>
+    googletag.cmd.push(function () {
+        googletag.defineSlot('/19968336/header-bid-tag-0', [[300, 250]], 'div-gpt-ad-1460505748561-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+    });
+    console.log('DDDDD');
+  </script>
+</head>
+
+<body>
+<h2>Prebid.js Test</h2>
+<h5>Div-1</h5>
+<div id='div-gpt-ad-1460505748561-0'>
+    <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1460505748561-0'); });
+        console.log('EEEEE')
+    </script>
+
+</div>
+</body>
+</html>
